@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import PopularFilms from "./views/PopularFilms.vue";
+import FavoriteFilms from "./views/FavoriteFilms.vue";
+import SearchFilms from "./views/SearchFilms.vue";
+import FilmCard from "./views/FilmCard.vue";
 
 Vue.use(Router);
 
@@ -8,17 +11,25 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "PopularFilms",
+      component: PopularFilms
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/favorites",
+      name: "FavoriteFilms",
+      component: FavoriteFilms
+    },
+    {
+      path: "/search",
+      name: "SearchFilms",
+      component: SearchFilms,
+      props: route => ({ queryString: route.query.q })
+    },
+    {
+      path: "/film/:id",
+      name: "FilmCard",
+      component: FilmCard,
+      props: true
     }
   ]
 });

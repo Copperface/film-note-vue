@@ -1,29 +1,55 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <AppHeader/>
+    <v-content>
+      <router-view :favoriteFilms="favoriteFilms" :genresList="genresList"/>
+    </v-content>
+    <AppFooter/>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+
+import LocalStorageHelper from "./utils/LocalStorageHelper";
+import EventBus from "./utils/EventBus";
+
+import { getGenresListData } from "./utils/API";
+
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppFooter
+  },
+  data() {
+    return {
+      genresList: [],
+      favoriteFilmsStorage: {},
+      favoriteFilms: []
+    };
+  },
+  created() {
+    EventBus.$on("clickAddToFavorite", id => {
+      this.favoriteFilms = [...this.favoriteFilms, id];
+      this.favoriteFilmsStorage.setData(this.favoriteFilms);
+    });
+    EventBus.$on("clickRemoveFromFavorite", id => {
+      const indexOfID = this.favoriteFilms.indexOf(id);
+      if (~indexOfID) {
+        this.favoriteFilms.splice(indexOfID, 1);
+        this.favoriteFilmsStorage.setData(this.favoriteFilms);
+      }
+    });
+  },
+  mounted() {
+    this.favoriteFilmsStorage = new LocalStorageHelper("favoriteFilms");
+    this.favoriteFilms = this.favoriteFilmsStorage.getData();
+
+    getGenresListData().then(({ genres }) => {
+      this.genresList = genres;
+    });
   }
-}
-</style>
+};
+</script>
