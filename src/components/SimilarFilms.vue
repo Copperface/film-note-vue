@@ -1,9 +1,23 @@
 <template>
   <div v-if="filmsData.length" class="similar-films">
-    <PageTitle text="Similar Films"/>
-    <v-progress-circular v-if="isLoading" :size="100" :width="7" color="blue" indeterminate/>
-    <AlertMessage v-else-if="isError" :text="'Oops, something went wrong, please try later'"/>
-    <FilmsList v-else :films="filmsData" :genresList="genresList" additionalKey="similar"/>
+    <PageTitle text="Similar Films" />
+    <v-progress-circular
+      v-if="isLoading"
+      :size="100"
+      :width="7"
+      color="blue"
+      indeterminate
+    />
+    <AlertMessage
+      v-else-if="isError"
+      :text="'Oops, something went wrong, please try later'"
+    />
+    <FilmsList
+      v-else
+      :films="filmsData"
+      :genresList="genresList"
+      additionalKey="similar"
+    />
   </div>
 </template>
 
@@ -13,11 +27,7 @@ import AlertMessage from "../components/partials/AlertMessage.vue";
 import FilmsList from "../components/film_list/FilmsList.vue";
 
 import { getSimilarFilmsData } from "../utils/API";
-import {
-  prepareFilmData,
-  refreshFavoriteFilmData,
-  isFavoriteFilm
-} from "../utils/FilmData";
+import { prepareFilmData, refreshFavoriteFilmData } from "../utils/FilmData";
 
 export default {
   name: "SimilarFilms",

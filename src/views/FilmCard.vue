@@ -1,32 +1,57 @@
 <template>
   <div class="film-card">
-    <v-progress-circular v-if="isLoading" :size="100" :width="7" color="blue" indeterminate/>
-    <AlertMessage v-else-if="isError" text="Oops, something went wrong, please try later"/>
+    <v-progress-circular
+      v-if="isLoading"
+      :size="100"
+      :width="7"
+      color="blue"
+      indeterminate
+    />
+    <AlertMessage
+      v-else-if="isError"
+      text="Oops, something went wrong, please try later"
+    />
     <template v-else>
       <div class="film-card__wrapper">
         <div class="film-card__poster">
           <div class="film-card__poster-inner">
             <div class="film-card__poster-content">
-              <v-img :src="fullPosterPath" :alt="filmData.title"/>
+              <v-img :src="fullPosterPath" :alt="filmData.title" />
             </div>
           </div>
         </div>
         <div class="film-card__block">
-          <div class="film-card__name">{{filmData.title}}</div>
-          <GenresBlock :genres="filmData.genres" :genresList="genresList" :filmID="+id"/>
+          <div class="film-card__name">{{ filmData.title }}</div>
+          <GenresBlock
+            :genres="filmData.genres"
+            :genresList="genresList"
+            :filmID="+id"
+          />
           <div class="film-card__records">
-            <br>
-            <span class="film-card__label film-card__label-status">Status:</span>
-            <span class="film-card__info film-card__info-status">{{filmData.status}}</span>
-            <br>
-            <span class="film-card__label film-card__label-release-date">Release date:</span>
-            <span class="film-card__info film-card__info-release-date">{{filmData.releaseDate}}</span>
-            <br>
-            <span class="film-card__label film-card__label-vote-average">Vote average:</span>
-            <span class="film-card__info film-card__info-vote-average">{{filmData.voteAverage}}</span>
-            <br>
+            <br />
+            <span class="film-card__label film-card__label-status"
+              >Status:</span
+            >
+            <span class="film-card__info film-card__info-status">{{
+              filmData.status
+            }}</span>
+            <br />
+            <span class="film-card__label film-card__label-release-date"
+              >Release date:</span
+            >
+            <span class="film-card__info film-card__info-release-date">{{
+              filmData.releaseDate
+            }}</span>
+            <br />
+            <span class="film-card__label film-card__label-vote-average"
+              >Vote average:</span
+            >
+            <span class="film-card__info film-card__info-vote-average">{{
+              filmData.voteAverage
+            }}</span>
+            <br />
           </div>
-          <div class="film-card__description">{{filmData.overview}}</div>
+          <div class="film-card__description">{{ filmData.overview }}</div>
           <v-btn
             class="film-card__favorite-button"
             v-if="isFavorite"
@@ -47,8 +72,16 @@
           </v-btn>
         </div>
       </div>
-      <RecommendFilms :filmID="+id" :favoriteFilms="favoriteFilms" :genresList="genresList"/>
-      <SimilarFilms :filmID="+id" :favoriteFilms="favoriteFilms" :genresList="genresList"/>
+      <RecommendFilms
+        :filmID="+id"
+        :favoriteFilms="favoriteFilms"
+        :genresList="genresList"
+      />
+      <SimilarFilms
+        :filmID="+id"
+        :favoriteFilms="favoriteFilms"
+        :genresList="genresList"
+      />
     </template>
   </div>
 </template>

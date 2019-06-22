@@ -1,13 +1,22 @@
 <template>
   <div class="favorites-films">
-    <PageTitle :text="'Favorite Fimls'"/>
-    <v-progress-circular v-if="isLoading" :size="100" :width="7" color="blue" indeterminate/>
-    <AlertMessage v-else-if="isError" :text="'Oops, something went wrong, please try later'"/>
+    <PageTitle :text="'Favorite Fimls'" />
+    <v-progress-circular
+      v-if="isLoading"
+      :size="100"
+      :width="7"
+      color="blue"
+      indeterminate
+    />
+    <AlertMessage
+      v-else-if="isError"
+      :text="'Oops, something went wrong, please try later'"
+    />
     <EmptyMessage
       v-else-if="!favoriteFilms.length"
       :text="'Sorry... is empty, please add something'"
     />
-    <FilmsList v-else :films="filmsData" :genresList="genresList"/>
+    <FilmsList v-else :films="filmsData" :genresList="genresList" />
   </div>
 </template>
 

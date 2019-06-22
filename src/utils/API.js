@@ -21,16 +21,16 @@ const recommendDataParams = {
 
 const filmDataParams = {
   path: "/movie/"
-}
+};
 
 const searchDataParams = {
   path: "/search/movie",
   queryParams: {}
-}
+};
 
 const genresListData = {
   path: "/genre/movie/list"
-}
+};
 
 function requestUrl(customParams) {
   const searchParams = new URLSearchParams();

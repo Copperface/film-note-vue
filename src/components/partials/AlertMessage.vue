@@ -1,5 +1,5 @@
 <template>
-  <v-alert type="error">{{text}}</v-alert>
+  <v-alert type="error">{{ text }}</v-alert>
 </template>
 
 <script>

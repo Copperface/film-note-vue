@@ -1,11 +1,23 @@
 <template>
   <div class="search-films">
-    <PageTitle :text="'Search Result'"/>
-    <EmptyMessage v-if="showEmptyMessage" :text="emptyMessageText"/>
-    <FilmsList :films="filmsData" :genresList="genresList"/>
-    <LoadMoreButton v-show="!hideLoadMoreButton" @clickLoadMore="handleClickLoadMore"/>
-    <v-progress-circular v-show="isLoading" :size="100" :width="7" color="blue" indeterminate/>
-    <AlertMessage v-if="isError" :text="'Oops, something went wrong, please try later'"/>
+    <PageTitle :text="'Search Result'" />
+    <EmptyMessage v-if="showEmptyMessage" :text="emptyMessageText" />
+    <FilmsList :films="filmsData" :genresList="genresList" />
+    <LoadMoreButton
+      v-show="!hideLoadMoreButton"
+      @clickLoadMore="handleClickLoadMore"
+    />
+    <v-progress-circular
+      v-show="isLoading"
+      :size="100"
+      :width="7"
+      color="blue"
+      indeterminate
+    />
+    <AlertMessage
+      v-if="isError"
+      :text="'Oops, something went wrong, please try later'"
+    />
   </div>
 </template>
 
@@ -17,11 +29,7 @@ import AlertMessage from "../components/partials/AlertMessage.vue";
 import EmptyMessage from "../components/partials/EmptyMessage.vue";
 
 import { getSearchFilmsData } from "../utils/API";
-import {
-  prepareFilmData,
-  refreshFavoriteFilmData,
-  isFavoriteFilm
-} from "../utils/FilmData";
+import { prepareFilmData, refreshFavoriteFilmData } from "../utils/FilmData";
 
 export default {
   name: "SearchFilms",

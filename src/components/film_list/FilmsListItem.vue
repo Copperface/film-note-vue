@@ -1,17 +1,32 @@
 <template>
   <v-card class="films-list-item">
-    <v-img class="films-list-item__poster" :src="fullImgURL" :alt="originalTitle"></v-img>
+    <v-img
+      class="films-list-item__poster"
+      :src="fullImgURL"
+      :alt="originalTitle"
+    ></v-img>
     <v-card-title class="films-list-item__title" primary-title>
       <div>
         <h3 class="headline mb-0">{{ originalTitle }}</h3>
-        <GenresBlock :genreIDs="genreIDs" :genres="genres" :genresList="genresList" :filmID="id"/>
+        <GenresBlock
+          :genreIDs="genreIDs"
+          :genres="genres"
+          :genresList="genresList"
+          :filmID="id"
+        />
         <div>{{ overview }}</div>
       </div>
     </v-card-title>
     <v-card-actions class="films-list-item__actions">
       <v-btn flat color="orange" :to="moreInfoRoutePath">More</v-btn>
-      <v-spacer/>
-      <v-btn v-if="favorite" flat icon color="pink" @click="handleClickRemoveFromFavorite">
+      <v-spacer />
+      <v-btn
+        v-if="favorite"
+        flat
+        icon
+        color="pink"
+        @click="handleClickRemoveFromFavorite"
+      >
         <v-icon>favorite</v-icon>
       </v-btn>
       <v-btn v-else flat icon color="pink" @click="handleClickAddToFavorite">

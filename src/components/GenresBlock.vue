@@ -1,6 +1,8 @@
 <template>
   <v-item-group>
-    <v-chip v-for="genreName in genreNamesList" :key="filmID+genreName">{{genreName}}</v-chip>
+    <v-chip v-for="genreName in genreNamesList" :key="filmID + genreName">{{
+      genreName
+    }}</v-chip>
   </v-item-group>
 </template>
 

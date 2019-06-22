@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <AppHeader/>
+    <AppHeader />
     <v-content>
-      <router-view :favoriteFilms="favoriteFilms" :genresList="genresList"/>
+      <router-view :favoriteFilms="favoriteFilms" :genresList="genresList" />
     </v-content>
-    <AppFooter/>
+    <AppFooter />
   </v-app>
 </template>
 

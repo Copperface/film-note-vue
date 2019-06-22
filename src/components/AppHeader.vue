@@ -3,9 +3,7 @@
     <v-toolbar-title>Film Note</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat to="/">
-        <v-icon left>star_border</v-icon>Popular
-      </v-btn>
+      <v-btn flat to="/"> <v-icon left>star_border</v-icon>Popular </v-btn>
       <v-btn flat to="/favorites">
         <v-icon left>favorite_border</v-icon>Favorites
       </v-btn>

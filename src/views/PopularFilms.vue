@@ -1,10 +1,22 @@
 <template>
   <div class="popular-films">
-    <PageTitle text="Popular Films"/>
-    <FilmsList :films="filmsData" :genresList="genresList"/>
-    <v-progress-circular v-show="isLoading" :size="100" :width="7" color="blue" indeterminate/>
-    <LoadMoreButton v-show="!hideLoadMoreButton" @clickLoadMore="handleClickLoadMore"/>
-    <AlertMessage v-if="isError" text="Oops, something went wrong, please try later"/>
+    <PageTitle text="Popular Films" />
+    <FilmsList :films="filmsData" :genresList="genresList" />
+    <v-progress-circular
+      v-show="isLoading"
+      :size="100"
+      :width="7"
+      color="blue"
+      indeterminate
+    />
+    <LoadMoreButton
+      v-show="!hideLoadMoreButton"
+      @clickLoadMore="handleClickLoadMore"
+    />
+    <AlertMessage
+      v-if="isError"
+      text="Oops, something went wrong, please try later"
+    />
   </div>
 </template>
 
@@ -15,11 +27,7 @@ import PageTitle from "../components/partials/PageTitle.vue";
 import AlertMessage from "../components/partials/AlertMessage.vue";
 
 import { getPopularFilmsData } from "../utils/API";
-import {
-  prepareFilmData,
-  refreshFavoriteFilmData,
-  isFavoriteFilm
-} from "../utils/FilmData";
+import { prepareFilmData, refreshFavoriteFilmData } from "../utils/FilmData";
 
 export default {
   name: "PopularFilms",

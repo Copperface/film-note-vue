@@ -1,5 +1,7 @@
 <template>
-  <v-btn class="primary" dark large @click="handleClickLoadMore">{{loadMoreButtonText}}</v-btn>
+  <v-btn class="primary" dark large @click="handleClickLoadMore">{{
+    loadMoreButtonText
+  }}</v-btn>
 </template>
 
 <script>

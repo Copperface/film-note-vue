@@ -2,8 +2,8 @@
   <v-layout class="films-list">
     <FilmsListItem
       v-for="film of films"
-      :key="additionalKey? additionalKey + film.id : film.id"
-      v-bind="{...film}"
+      :key="additionalKey ? additionalKey + film.id : film.id"
+      v-bind="{ ...film }"
       :genresList="genresList"
     />
   </v-layout>
