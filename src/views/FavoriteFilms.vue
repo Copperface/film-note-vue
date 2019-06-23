@@ -71,10 +71,11 @@ export default {
       this.formFilmDataСontent(this.favoriteFilms)
         .then(data => {
           this.filmsData = [...data];
-          this.isLoading = false;
         })
         .catch(() => {
           this.isError = true;
+        })
+        .finally(() => {
           this.isLoading = false;
         });
     },

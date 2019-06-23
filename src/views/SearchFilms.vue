@@ -113,14 +113,15 @@ export default {
             ...this.filmsData,
             ...prepareFilmData(results, this.favoriteFilms)
           ];
-          this.isLoading = false;
 
           if (this.page === totalPages) return (this.isLastPage = true);
           this.page += 1;
         })
         .catch(() => {
-          this.isLoading = false;
           this.isError = true;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
     handleClickLoadMore() {

@@ -84,11 +84,12 @@ export default {
       getRecommendFilmsData(this.filmID)
         .then(({ results }) => {
           this.filmsData = [...prepareFilmData(results, this.favoriteFilms)];
-          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           this.isError = true;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     }
   }

@@ -32,23 +32,23 @@
             <span class="film-card__label film-card__label-status"
               >Status:</span
             >
-            <span class="film-card__info film-card__info-status">{{
-              filmData.status
-            }}</span>
+            <span class="film-card__info film-card__info-status">
+              {{ filmData.status }}
+            </span>
             <br />
             <span class="film-card__label film-card__label-release-date"
               >Release date:</span
             >
-            <span class="film-card__info film-card__info-release-date">{{
-              filmData.releaseDate
-            }}</span>
+            <span class="film-card__info film-card__info-release-date">
+              {{ filmData.releaseDate }}
+            </span>
             <br />
             <span class="film-card__label film-card__label-vote-average"
               >Vote average:</span
             >
-            <span class="film-card__info film-card__info-vote-average">{{
-              filmData.voteAverage
-            }}</span>
+            <span class="film-card__info film-card__info-vote-average">
+              {{ filmData.voteAverage }}
+            </span>
             <br />
           </div>
           <div class="film-card__description">{{ filmData.overview }}</div>
@@ -162,7 +162,6 @@ export default {
             vote_average: voteAverage,
             poster_path: posterPath
           }) => {
-            this.isLoading = false;
             this.filmData = {
               title,
               status,
@@ -175,8 +174,10 @@ export default {
           }
         )
         .catch(() => {
-          this.isLoading = false;
           this.isError = true;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
     handleClickAddToFavorite() {

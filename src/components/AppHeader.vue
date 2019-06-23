@@ -8,6 +8,14 @@
         <v-icon left>favorite_border</v-icon>Favorites
       </v-btn>
     </v-toolbar-items>
+    <v-toolbar-items class="hidden-md-and-up">
+      <v-btn icon to="/">
+        <v-icon>star_border</v-icon>
+      </v-btn>
+      <v-btn icon to="/favorites">
+        <v-icon>favorite_border</v-icon>
+      </v-btn>
+    </v-toolbar-items>
     <v-text-field
       v-model="searchQuery"
       class="xs12 sm6 md4"
